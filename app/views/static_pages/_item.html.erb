@@ -4,7 +4,9 @@
          <%= is_past_discount article.expire_time, article.discount %>&nbsp;&nbsp; 
          <h2 class="text-center"><%= article.title%></h2>
          <div class="pull-right">
+            <%if article.hasExpiryDate %>
              <%= is_past_expire_time article.expire_time %> 
+            <% end %>
          </div>
        
          <br>
