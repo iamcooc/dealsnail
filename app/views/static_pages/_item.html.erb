@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+   <div class="panel-heading">
+   
+         <%= is_past_discount article.expire_time, article.discount %>&nbsp;&nbsp; 
+         <h2 class="text-center"><%= article.title%></h2>
+         <div class="pull-right">
+             <%= is_past_expire_time article.expire_time %> 
+         </div>
+       
+         <br>
+
+     
+
+   </div> 
+   <%= link_to article_path(article) do %>
+   <div class="panel-body">
+
+     
+      
+
+     
+      <br>
+      <div class="row">
+	    <div class="col-sm-5"> 
+	    	<%= image_tag article.avatar.url(:medium) %>
+		</div>
+	    <div class="col-sm-7">	
+	      <%= raw article.content %>
+
+     	</div>
+      </div>  
+      <br>
+      
+
+
+   </div>
+   <% end %>
+   <div class="panel-footer">
+
+   		<div class="pull-right">
+   			post @ <%= article.updated_at.to_s(:long)%>
+   		</div>
+   		<div>
+   			<%= fa_icon "lg tags", text: ":" %> <% tag_cloud(article.tag_counts_on(:tags), %w(css1 css2 css3 css4)) do |tag, css_class| %>
+               <span class="label label-success"><%= link_to tag.name, tag_path(tag), :class => css_class %></span>
+            <% end %>
+   		</div>
+   </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="home">
+	<% @articles.each.with_index do |article, index| %>
+		<%# if index % 4 == 0 || index == 0 %>
+			<div class="row">
+		<%# end %>	
+				<div class="col-sm-8">
+					<%= render "item", :article => article %>
+				</div>
+		<%# if index % 4 == 0 || index == 0 %>
+			</div>
+		<%# end %>
+		
+	<% end %>
+
+</div>

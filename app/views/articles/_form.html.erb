@@ -1,0 +1,137 @@
+<script type='text/javascript' charset='UTF-8'>
+  $(document).ready(function(){
+    $('form[data-remote]').bind('ajax:before', function(){
+      for (instance in CKEDITOR.instances){
+        CKEDITOR.instances[instance].updateElement();
+      }
+    });
+  });
+</script>
+
+<%= form_for @article, :html => { :multipart => true, :class => "form-horizontal", :role => "form" } do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "* Title",  :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%#= f.cktext_area :title, :ckeditor => {:toolbar => 'mini'} %>
+      <%= f.text_field :title, :class => "form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :discount, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :discount, :class => "form-control" %>
+    </div>  
+  </div>
+  
+
+  <div class="form-group">
+    <%= f.label "* Tags", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :tag_list, :class => "form-control", :placeholder => "separated by commas" %>
+    </div> 
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :brand, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :brand, :class => "form-control"%>
+    </div>   
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label "* Store", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :store, :class => "form-control" %>
+    </div>   
+  </div>
+
+  <div class="form-group">
+    <%= f.label "* Content", :class => "col-sm-2 control-label" %><br><br>
+    <%= f.cktext_area :content, :ckeditor => {:toolbar => 'mini', :height => '800'} %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.check_box :hasExpiryDate %>exactly expiry date?
+  </div>
+  <div class="form-group expirydate_section hide">
+    <%= f.label :expire_time, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.datetime_select :expire_time, :class => "form-control" %>
+    </div>   
+  </div>
+  
+
+  <div class="form-group">
+
+    <%= f.label :created_by, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :created_by, :value => "#{current_user.name}", :class => "form-control", disabled: "true" %>
+    </div>   
+  </div>
+
+
+  <% if @article.avatar.present? %>
+  <div class="form-group">
+    <%= f.label " thumb image", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+
+      <%= image_tag @article.avatar.url(:medium), :class => "form-control", :style => "width:200px; height:200px;" %>
+    </div>   
+  </div>
+  <% end %>
+  
+
+  <div class="form-group">
+    <%= f.label "* Avatar", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.file_field :avatar %>
+    </div>  
+  </div>
+
+<br>
+  <div class="actions">
+    <%= f.submit "Submit", :class => "btn btn-primary btn-lg col-sm-6 col-sm-offset-3" %>
+  </div>
+<% end %>
+<br>
+<hr>
+
+
+<script type="text/javascript">
+
+  $('#article_hasExpiryDate').on( "click", function() {
+
+    if($('#article_hasExpiryDate').prop('checked')) {
+        $(".expirydate_section").removeClass('hide');
+       
+    } else {
+        $(".expirydate_section").addClass('hide');
+       
+    }
+
+  });
+
+  var hasExpiryDate = <%= @article.hasExpiryDate %>;
+  if (hasExpiryDate) {
+    $(".expirydate_section").removeClass('hide');
+    $('#article_hasExpiryDate').attr('checked')
+       
+  } else {
+    $(".expirydate_section").addClass('hide');
+  }
+
+</script>

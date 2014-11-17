@@ -1,0 +1,27 @@
+<!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright &copy; Your Website 2014
+                </div>
+            </div>
+            <% if user_signed_in? %>
+              <%= current_user.email %>
+              |
+              <%= link_to "user profile", edit_user_registration_path %>
+              |
+              <%= link_to "Post a new discount info", new_article_path %>
+              |
+              <%= link_to "articles", articles_path %>
+              |
+              <%= link_to "Users", users_path %>
+              |
+              <%= link_to "log out ", destroy_user_session_path, method: "delete" %>
+              |
+
+            <%else%>
+              not log in yet.  | <%= link_to "Log In ",new_user_session_path, method: "get" %> | <%= link_to "Sign Up ",new_user_registration_path, method: "get" %>
+            <%end%>
+        </div>
+    </footer>

@@ -1,0 +1,59 @@
+<%= link_to ' << Back', root_path %>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= image_tag @article.avatar.url(:thumb), :class => "thumbnail" %>
+  </div>
+  <div class="col-sm-8">
+    <div class="pull-right">
+      <%= is_past_expire_time @article.expire_time %> 
+    </div>
+    <h3><%= is_past_discount @article.expire_time, @article.discount %>&nbsp;&nbsp; <%= @article.title %></h3>
+    
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+
+  <strong>Brand:</strong><%= @article.brand %>&nbsp;&nbsp;<strong>Store:</strong><%= @article.store %>
+<br>
+ <%= fa_icon "lg tags", text: ":" %> <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+    <span class="label label-success"><%= link_to tag.name, tag_path(tag), :class => css_class %></span>
+  <% end %>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+
+    <div class="well">
+      <%= raw @article.content %>
+      <br>
+      <div class="pull-right">
+        <%= @article.updated_at.to_s(:short)%> 
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr>
+Comments:
+ <br>
+
+
+History:
+  <ul>
+    <li>pervious discount connect to this brand or these tags</li>
+    <li> second:   </li>
+    <li> third ..... </li>
+  </ul>
+  
+
+
+
+ 
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_article_path(@article) %>
+<% end %>

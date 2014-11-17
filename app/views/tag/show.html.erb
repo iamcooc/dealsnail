@@ -1,0 +1,20 @@
+<h1>Articles Tagged as <span class="label label-success"><%= @tag.name %></span></h1>
+<hr>
+<% if @articles.count > 0 %>
+
+  <ul>
+
+  <% @articles.each do |article| %>
+
+    <li><%= link_to "#{article.title}| #{article.updated_at.to_s(:short)}", article_path(article) %></li>
+
+  <% end %>
+
+  </ul>
+
+<% else %>
+
+  <p>This tag is not associated with any articles.</p>
+
+<% end %>
+<hr>
