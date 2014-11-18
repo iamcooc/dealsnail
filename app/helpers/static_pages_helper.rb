@@ -18,7 +18,7 @@ module StaticPagesHelper
 			#raw "<p><del>#{discount}</del></p>"
 			raw "<del>Expired over #{distance_of_time_in_words_to_now expire_time} @ #{expire_time.strftime('%m/%d/%Y')}</del>"
 		else
-			raw "Expiring in #{distance_of_time_in_words_to_now expire_time} @ #{expire_time.strftime('%m/%d/%Y')}"
+			raw "<span class=''>Expiring in </span> #{distance_of_time_in_words_to_now expire_time} @ #{expire_time.strftime('%m/%d/%Y')}"
 		end	
 	end	
 end
