@@ -36,19 +36,21 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= image_tag article.avatar.url(:thumb) %></td>
-        <td><%=link_to  article.title,  article_path(article) %></td>
+        <td><%= link_to article.title, article_path(article) %></td>
         <td><%= article.discount %></td>
         <td><%= article.tag_list %></td>
         <td><%= article.brand %></td>
-        <td><%= article.store %></td>
-        <td><%= article.content %></td>
+        <td><%= link_to article.store, "#{article.link}", :target => "_blank" %></td>
+        <td><%= render_article_content article.content %></td>
         <td><%= article.expire_time %></td>
         <td><%= article.created_by %></td>
         <td><%= article.thumbnail_img %></td>
         <td><%= article.impressionist_count %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if (current_user.try(:admin?) || current_user.id == article.user_id)  %>
+          <td><%= link_to 'Show', article %></td>
+          <td><%= link_to 'Edit', edit_article_path(article) %></td>
+          <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117060247) do
+ActiveRecord::Schema.define(version: 20141118083753) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -30,7 +30,12 @@ ActiveRecord::Schema.define(version: 20141117060247) do
     t.datetime "avatar_updated_at"
     t.string   "store"
     t.boolean  "hasExpiryDate",       default: false
+    t.string   "link"
+    t.integer  "user_id"
   end
+
+  add_index "articles", ["updated_at"], name: "index_articles_on_updated_at"
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id"
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false

@@ -1,8 +1,13 @@
 module StaticPagesHelper
 
-	def is_past_discount(expire_time, discount)
-		if expire_time.past?
-			raw "<del>#{discount}</del>"
+	def is_past_discount(hasExpiryDate, expire_time, discount)
+
+		if hasExpiryDate
+			if expire_time.past?
+				raw "<del>#{discount}</del>"
+			else
+				raw "<code>#{discount}</code>"
+			end	
 		else
 			raw "<code>#{discount}</code>"
 		end	

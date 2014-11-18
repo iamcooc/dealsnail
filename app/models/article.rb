@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
-
+	belongs_to :user
+	validates :user_id, presence: true
+	default_scope -> { order('updated_at DESC') }
 	is_impressionable
 	acts_as_taggable
 
@@ -10,5 +12,5 @@ class Article < ActiveRecord::Base
 
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/  
 
-	validates_presence_of :title, :store, :content, :avatar	
+	validates_presence_of :title, :store, :link, :content, :avatar	
 end
