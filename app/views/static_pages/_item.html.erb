@@ -1,6 +1,7 @@
 <div class="panel panel-default">
-   <div class="panel-heading">
    
+   <div class="panel-heading">
+   <%= link_to article_path(article) do %>
          <%= is_past_discount article.hasExpiryDate, article.expire_time, article.discount %>&nbsp;&nbsp; 
          <h2><span class="text-primary"><%= article.title%></span></h2>
          <div class="pull-right">
@@ -12,15 +13,10 @@
          <br>
 
      
-
+   <% end %>    
    </div> 
-   <%= link_to article_path(article) do %>
+   
    <div class="panel-body">
-
-     
-      
-
-     
       <br>
       <div class="row">
 	    <div class="col-sm-5"> 
@@ -36,7 +32,7 @@
 
 
    </div>
-   <% end %>
+   
    <div class="panel-footer">
 
    		<div class="pull-right">
@@ -45,9 +41,9 @@
 
    		<div>
             <% if article.brand.present? %>
-               <strong>Brand:</strong><%= article.brand %>&nbsp;&nbsp;
+               <strong>Brand: </strong><%= article.brand %>&nbsp;&nbsp;
             <% end %>  
-            <strong>Store:</strong><%= link_to article.store, "#{article.link}", :target => "_blank" %>
+            <strong>Store: </strong><%= link_to article.store, "#{article.link}", :target => "_blank" %>
             <br>
             <% if article.tag_counts_on(:tags).present? %> 
       			<%= fa_icon "lg tags", text: ":" %> <% tag_cloud(article.tag_counts_on(:tags), %w(css1 css2 css3 css4)) do |tag, css_class| %>

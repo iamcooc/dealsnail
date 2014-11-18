@@ -26,7 +26,6 @@
       <th>Cotent</th>
       <th>Expire time</th>
       <th>Created by</th>
-      <th>Thumbnail img</th>
       <th>View</th>
       <th colspan="3"></th>
     </tr>
@@ -44,7 +43,6 @@
         <td><%= render_article_content article.content %></td>
         <td><%= article.expire_time %></td>
         <td><%= article.created_by %></td>
-        <td><%= article.thumbnail_img %></td>
         <td><%= article.impressionist_count %></td>
         <% if (current_user.try(:admin?) || current_user.id == article.user_id)  %>
           <td><%= link_to 'Show', article %></td>
