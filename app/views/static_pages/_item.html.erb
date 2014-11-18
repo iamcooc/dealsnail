@@ -5,7 +5,7 @@
          <h2><span class="text-primary"><%= article.title%></span></h2>
          <div class="pull-right">
             <%if article.hasExpiryDate %>
-             <%= is_past_expire_time article.expire_time %> 
+               <%= is_past_expire_time article.expire_time %> 
             <% end %>
          </div>
        
