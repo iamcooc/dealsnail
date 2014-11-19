@@ -1,3 +1,14 @@
+<% content_for :for_head do %>
+  <meta property="og:title" content="<%= @article.discount %> <%= @article.title %>  @ <%= @article.store %>"  />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="<%= truncate(@article.content, :length => 45) %> " />
+  <meta property="og:url" content="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" />
+  <meta property="og:image" content="<%= @article.avatar.url(:medium) %>"/>
+ 
+<% end %>
+
+
+
 <%= link_to ' << Back', root_path %>
 
 <div class="row" style="margin-top:10px;">
@@ -9,7 +20,9 @@
       <%if @article.hasExpiryDate %>
         <%= is_past_expire_time @article.expire_time %> 
       <% end %>  &nbsp;&nbsp;
-      <%= fa_icon "lg eye", text: " : " %><%= @article.impressionist_count %>
+      <%= render_view_number  @article.impressionist_count %>
+        <%= fa_icon "lg eye", text: " : " %><%= @article.impressionist_count %>
+      </span>  
     </div>
 
     <div class="pull-left">

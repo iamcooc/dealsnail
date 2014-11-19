@@ -1,6 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
 <head>
+providing good deals for every shopaholic
+  <meta charset="utf-8">
+  <meta name="description" content="providing good deals for every shopaholic">
+  <meta name="author" content="one of shopaholics">
+
+  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">	  
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no, minimal-ui">
+  <meta name="fb:app_id" content="1502520630019110"/>
+  <meta property="fb:admins" content="758238745" />
+  <meta name="og:site_name" content="Dealsnail"/>
+  <% if content_for? :for_head %>
+    <%= yield :for_head %>
+  <% end %>
   <title>DiscountInfo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -12,12 +25,40 @@
 </script>
 
 <body>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1502520630019110',
+	      xfbml      : true,
+	      version    : 'v2.2'
+	    });
+	  };
 
-<%= render 'layouts/header' %>
-<div class="container main">
-	<%= yield %>
-</div>
-<%= render 'layouts/footer' %>
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<%= render 'layouts/header' %>
+	<div class="container main">
+		<%= yield %>
+	</div>
+	<%= render 'layouts/footer' %>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-56887304-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 
 </body>
 </html>

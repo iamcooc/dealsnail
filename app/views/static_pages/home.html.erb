@@ -1,4 +1,12 @@
+ <% content_for :for_head do %>
+ 	
+ 	<meta property="og:title" content="Welcome to Dealsnail| Good deals never hide" />
+  	<meta property="og:type" content="website" />
+  	<meta property="og:image" content="<%#= asset_path('index/logo.jpg')%>" />
+<% end %>
+
 <div class="home">
+
 	<% @articles.each.with_index do |article, index| %>
 		<%# if index % 4 == 0 || index == 0 %>
 			<div class="row">
@@ -6,9 +14,19 @@
 				<div class="col-sm-8">
 					<%= render "item", :article => article %>
 				</div>
-		<%# if index % 4 == 0 || index == 0 %>
+
+				<% if index == 0 %>
+				<div class="col-sm-4">
+					<div
+					  class="fb-like"
+					  data-share="true"
+					  data-width="450"
+					  data-show-faces="true">
+					</div>
+				</div>	
+				<% end %>
 			</div>
-		<%# end %>
+		
 		
 	<% end %>
 

@@ -8,7 +8,11 @@
             <%if article.hasExpiryDate %>
                <%= is_past_expire_time article.expire_time %>&nbsp;  
             <% end %>
-            <%= fa_icon "lg eye", text: " : " %><%= article.impressionist_count %>
+            
+            <%= render_view_number article.impressionist_count %> 
+               <%= fa_icon "lg eye", text: " : " %><%= article.impressionist_count %>
+            </span>
+            
          </div>
          <br>
    <% end %>    
