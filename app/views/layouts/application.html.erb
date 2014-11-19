@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#">
 <head>
-providing good deals for every shopaholic
+  <% if content_for? :for_head %>
+    <%= yield :for_head %>
+  <% end %>		
   <meta charset="utf-8">
   <meta name="description" content="providing good deals for every shopaholic">
   <meta name="author" content="one of shopaholics">
@@ -11,9 +13,7 @@ providing good deals for every shopaholic
   <meta name="fb:app_id" content="1502520630019110"/>
   <meta property="fb:admins" content="758238745" />
   <meta name="og:site_name" content="Dealsnail"/>
-  <% if content_for? :for_head %>
-    <%= yield :for_head %>
-  <% end %>
+  
   <title>DiscountInfo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

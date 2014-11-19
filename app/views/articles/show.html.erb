@@ -36,16 +36,33 @@
 <hr>
 <div class="row">
   <div class="col-sm-12" style="margin-bottom:10px;">
-  <% if @article.brand.present? %>
-    <strong>Brand:</strong><%= @article.brand %>&nbsp;&nbsp;
-  <% end %>  
-  <strong>Store:</strong><%= link_to @article.store, "#{@article.link}", :target => "_blank" %>
-<br>
- <% if @tags.present? %> 
-   <%= fa_icon "lg tags", text: ":" %> <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-      <span class="label label-success"><%= link_to "# #{tag.name}", tag_path(tag), :class => css_class %></span>
+    <% if @article.brand.present? %>
+      <strong>Brand:</strong><%= @article.brand %>&nbsp;&nbsp;
+    <% end %>  
+    <strong>Store:</strong><%= link_to @article.store, "#{@article.link}", :target => "_blank" %>
+    <br>
+    <% if @tags.present? %> 
+      <%= fa_icon "lg tags", text: ":" %> <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+        <span class="label label-success"><%= link_to "# #{tag.name}", tag_path(tag), :class => css_class %></span>
+      <% end %>
     <% end %>
-  <% end %>
+    &nbsp;&nbsp;
+    
+   <div
+      class="fb-share-button"
+     
+      data-layout="box_count"
+      data-share="true"
+      data-width="450"
+      data-show-faces="true"
+      data-service="facebook" 
+  
+      data-href="https://www.facebook.com/sharer/sharer.php?u=https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>">
+         
+        </div>
+      
+
+  </div>
 </div>
 
 
