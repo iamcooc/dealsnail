@@ -82,6 +82,8 @@
     <%= f.label :expire_time, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.datetime_select :expire_time, :class => "form-control" %>
+      <%#= f.select :timeZoneOffset, options_for_select([["PST", "8"], ["PDT", "7"],["EST", "5"], ["EDT", "4"]]), :selected => '3' %>
+      <%= f.select :timeZoneOffset, options_for_select([["PST", "8"], ["PDT", "7"],["EST", "5"], ["EDT", "4"]], @article.timeZoneOffset  ) %>
     </div>   
   </div>
   
@@ -91,7 +93,7 @@
     <%= f.label :created_by, :class => "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%if @article.created_by.present? %>
-        <%= f.text_field :created_by, :value => "#{@article.created_by}", :class => "form-control" %>
+        <%= f.text_field :created_by, :value => "#{@article.created_by}", :class => "form-control" %> 
       <% else %>
         <%= f.text_field :created_by, :value => "#{current_user.name}", :class => "form-control" %>
       <% end %>

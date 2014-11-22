@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118083753) do
+ActiveRecord::Schema.define(version: 20141121222618) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141118083753) do
     t.boolean  "hasExpiryDate",       default: false
     t.string   "link"
     t.integer  "user_id"
+    t.integer  "timeZoneOffset",      default: 0
   end
 
   add_index "articles", ["updated_at"], name: "index_articles_on_updated_at"

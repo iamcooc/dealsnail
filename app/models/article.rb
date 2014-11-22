@@ -13,4 +13,7 @@ class Article < ActiveRecord::Base
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/  
 
 	validates_presence_of :title, :store, :link, :content, :avatar	
+
+
+	
 end

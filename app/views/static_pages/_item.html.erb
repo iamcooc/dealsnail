@@ -8,11 +8,11 @@
          </div>
          <div class="col-sm-10"> 
             <%= link_to article_path(article) do %>
-               <span style="font-size:1.4em;"><%= is_past_discount article.hasExpiryDate, article.expire_time, article.discount %></span>&nbsp;&nbsp; 
+               <span style="font-size:1.4em;"><%= is_past_discount article.hasExpiryDate, article.expire_time, article.timeZoneOffset, article.discount %></span>&nbsp;&nbsp; 
                <h2><span class="text-primary"><%= article.title%></span></h2>
                <div class="pull-right">
                   <%if article.hasExpiryDate %>
-                     <%= is_past_expire_time article.expire_time %>&nbsp;  
+                     <%= is_past_expire_time article.expire_time, article.timeZoneOffset %>&nbsp;  
                   <% end %>
                      
                   <%= render_view_number article.impressionist_count %> 
