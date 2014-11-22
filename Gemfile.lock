@@ -38,6 +38,8 @@ GEM
     bcrypt (3.1.7)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
     builder (3.2.2)
     ckeditor (4.1.0)
       mime-types
@@ -178,6 +180,7 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -186,6 +189,7 @@ DEPENDENCIES
   acts-as-taggable-on
   aws-sdk
   bootstrap-sass
+  bootstrap-will_paginate
   ckeditor
   coffee-rails (~> 4.0.0)
   devise
@@ -206,3 +210,4 @@ DEPENDENCIES
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
+  will_paginate

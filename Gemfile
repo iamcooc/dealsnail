@@ -48,6 +48,8 @@ gem 'figaro'
 gem 'ckeditor'
 
 gem 'acts-as-taggable-on'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 # Use ActiveModel has_secure_password
