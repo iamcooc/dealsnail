@@ -8,86 +8,82 @@
 <% end %>
 
 
+<div class="article-show">
+  <%= link_to ' << Back', root_path %>
 
-<%= link_to ' << Back', root_path %>
-
-<div class="row" style="margin-top:10px;">
-  <div class="col-sm-2 " >
-    <%= image_tag @article.avatar.url(:thumb), :class => "img-thumbnail" %>
-  </div>
-  <div class="col-sm-10">
-    <div class="pull-right">
-      <%if @article.hasExpiryDate %>
-        <%= is_past_expire_time @article.expire_time, @article.timeZoneOffset %> 
-      <% end %>  &nbsp;&nbsp;
-      <%= render_view_number  @article.impressionist_count %>
-        <%= fa_icon "lg eye", text: " : " %><%= @article.impressionist_count %>
-      </span>  
+  <div class="row" style="margin-top:10px;">
+    <div class="col-sm-2 " >
+      <%= image_tag @article.avatar.url(:thumb), :class => "img-thumbnail" %>
     </div>
-
-    <div class="pull-left">
-      <h2>
-      <%= is_past_discount @article.hasExpiryDate, @article.expire_time, @article.timeZoneOffset, @article.discount %>&nbsp;&nbsp; <span class="text-primary"><%= @article.title %></span>
-      </h2>
-    </div>  
-    
-  </div>
-</div>
-
-<hr>
-
-<div class="row">
-  <div class="col-sm-12" style="margin-bottom:10px;">
-    <% if @article.brand.present? %>
-      <strong>Brand: </strong><%= @article.brand %>&nbsp;&nbsp;
-    <% end %>  
-
-    <strong>Store: </strong><%= link_to @article.store, "#{@article.link}", :target => "_blank" %>
-    <br><br>
-
-    <% if @tags.present? %> 
-      <%= fa_icon "lg tags", text: ":" %> <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-        <span class="label label-success"><%= link_to "# #{tag.name}", tag_path(tag), :class => css_class %></span>
-      <% end %>
-      &nbsp;&nbsp;
-    <% end %>
-    
-    <div class="fb-like" data-href="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" data-width="150" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
- 
-      
-
-  </div>
-</div>
-
-
-
-<div class="row">
-  <div class="col-sm-12">
-
-    <div class="well">
-      <%= raw @article.content %>
-      <br>
+    <div class="col-sm-10">
       <div class="pull-right">
-        post @<%= @article.updated_at.to_s(:short)%> 
+        <%if @article.hasExpiryDate %>
+          <%= is_past_expire_time @article.expire_time, @article.timeZoneOffset %> 
+        <% end %>  &nbsp;&nbsp;
+        <%= render_view_number  @article.impressionist_count %>
+          <%= fa_icon "lg eye", text: " : " %><%= @article.impressionist_count %>
+        </span>  
       </div>
 
+      <div class="pull-left">
+        <h2>
+        <%= is_past_discount @article.hasExpiryDate, @article.expire_time, @article.timeZoneOffset, @article.discount %>&nbsp;&nbsp; <span class="text-primary"><%= @article.title %></span>
+        </h2>
+      </div>  
+      
     </div>
   </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-12" style="margin-bottom:10px;">
+      <% if @article.brand.present? %>
+        <strong>Brand: </strong><%= @article.brand %>&nbsp;&nbsp;
+      <% end %>  
+
+      <strong>Store: </strong><%= link_to @article.store, "#{@article.link}", :target => "_blank" %>
+      <br><br>
+
+      <% if @tags.present? %> 
+        <%= fa_icon "lg tags", text: ":" %> <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+          <span class="label label-success"><%= link_to "# #{tag.name}", tag_path(tag), :class => css_class %></span>
+        <% end %>
+        &nbsp;&nbsp;
+      <% end %>
+      
+      <div class="fb-like" data-href="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" data-width="150" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+   
+        
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="well">
+        <%= raw @article.content %>
+        <br>
+        <div class="pull-right">
+          post @<%= @article.updated_at.to_s(:short)%> 
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <br>
+  <div class="row">
+  <div class="fb-comments" data-href="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" data-numposts="5" data-colorscheme="light"></div>
+  </div>
+  <br>
+
 </div>
-
-<hr>
-<br>
-<div class="row">
-<div class="fb-comments" data-href="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" data-numposts="5" data-colorscheme="light"></div>
-</div>
-<br>
-
-
   
 
-
-
- 
+<!-- for admin-->
 <% if user_signed_in? %>
   <% if (current_user.try(:admin?) || current_user.id == @article.user_id)  %>
     <%= link_to 'Edit', edit_article_path(@article) %>

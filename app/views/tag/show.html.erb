@@ -1,20 +1,22 @@
-<h1>Articles Tagged as <span class="label label-success"># <%= @tag.name %></span></h1>
-<hr>
-<% if @articles.count > 0 %>
+<div class="tag-page">
+	<h1>Articles Tagged as <span class="label label-success"># <%= @tag.name %></span></h1>
+	<hr>
+	<% if @articles.count > 0 %>
 
-  <ul>
+	  <ul>
 
-  <% @articles.each do |article| %>
-  
-    <li><%= link_to "#{article.title}| #{article.updated_at.to_s(:short)}", article_path(article) %></li>
+	  <% @articles.each do |article| %>
+	  
+	    <li><%= link_to "#{article.title}| #{article.updated_at.to_s(:short)}", article_path(article) %></li>
 
-  <% end %>
+	  <% end %>
 
-  </ul>
+	  </ul>
 
-<% else %>
+	<% else %>
 
-  <p>This tag is not associated with any articles.</p>
+	  <p>This tag is not associated with any articles.</p>
 
-<% end %>
-<hr>
+	<% end %>
+	
+</div>	

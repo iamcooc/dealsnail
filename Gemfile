@@ -51,6 +51,9 @@ gem 'acts-as-taggable-on'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'searchkick' #brew install elasticsearch and java jdk
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

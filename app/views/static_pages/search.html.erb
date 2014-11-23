@@ -1,0 +1,33 @@
+
+
+<div class="search-page">
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>Search :<mark><%= @query  %></mark></h1>
+		
+		</div>
+	</div>	
+
+
+
+	<br>
+	<hr>
+	<% if @articles.present? and @articles.count > 0 %>
+		
+	  <ul>
+
+	  <% @articles.each do |article| %>
+	  
+	    <li><%= link_to "#{article.title} | #{article.updated_at.to_s(:short)}", article_path(article) %></li>
+
+	  <% end %>
+
+	  </ul>
+
+	<% else %>
+
+	  <p><b>No results found  </b></p>
+
+	<% end %>
+	
+</div>	

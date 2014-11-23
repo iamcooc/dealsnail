@@ -1,9 +1,12 @@
 class Article < ActiveRecord::Base
+
+
 	belongs_to :user
 	validates :user_id, presence: true
 	default_scope -> { order('updated_at DESC') }
 	is_impressionable
 	acts_as_taggable
+	searchkick
 
 	has_attached_file :avatar, 
 	 	:styles => { 

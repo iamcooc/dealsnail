@@ -1,6 +1,16 @@
-.home {
+.home, .search-page, .tag-page, .article-show {
 	
-	height:500px;
+	min-height:800px;
+}
+
+.tag-page > ul > li, .search-page > ul > li {
+	font-size:1.4em;
+	line-height: 2.333em;
+}
+
+
+a:hover, a:focus {
+    text-decoration: none !important;
 }
 
 .main {
@@ -11,8 +21,6 @@
 .css2 { font-size: 1.2em; color:white !important;}
 .css3 { font-size: 1.4em; color:white !important;}
 .css4 { font-size: 1.6em; color:white !important;}
-
-
 
 .purple {
 	color: #800080;

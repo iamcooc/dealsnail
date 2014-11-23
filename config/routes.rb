@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :users
   
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  
+  
+  match "search", to: "static_pages#search", :via => [:get, :post]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
