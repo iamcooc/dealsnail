@@ -16,18 +16,23 @@
 		
 	  <ul>
 
-	  <% @articles.each do |article| %>
-	  
-	    <li><%= link_to "#{article.title} | #{article.updated_at.to_s(:short)}", article_path(article) %></li>
+		  <% @articles.each do |article| %>
+		  
+		    <li><%= link_to "#{article.title} | #{article.updated_at.to_s(:short)}", article_path(article) %></li>
 
-	  <% end %>
+		  <% end %>
 
 	  </ul>
+	  <br>
+	  <br>
+	  <br>
+	  <%= will_paginate @articles %>
 
 	<% else %>
 
 	  <p><b>No results found  </b></p>
 
 	<% end %>
+
 	
 </div>	

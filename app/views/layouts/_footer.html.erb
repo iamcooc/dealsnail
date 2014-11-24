@@ -21,7 +21,7 @@
               |
 
             <%else%>
-              not log in yet.  | <%= link_to "Log In ",new_user_session_path, method: "get" %> | <%= link_to "Sign Up ",new_user_registration_path, method: "get" %>
+              <%= link_to "Log In ",new_user_session_path, method: "get" %> | <%= link_to "Sign Up ",new_user_registration_path, method: "get" %>
             <%end%>
         </div>
     </footer>

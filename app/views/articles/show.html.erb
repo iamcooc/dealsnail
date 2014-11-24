@@ -1,7 +1,7 @@
 <% content_for :for_head do %>
   <meta property="og:title" content="<%= @article.discount %> <%= @article.title %>  @ <%= @article.store %>"  />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="<%= truncate(@article.content, :length => 45) %> " />
+  <meta property="og:description" content="<%=raw truncate(@article.content, :length => 45) %> " />
   <meta property="og:url" content="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" />
   <meta property="og:image" content="<%= @article.avatar.url(:medium) %>"/>
  
