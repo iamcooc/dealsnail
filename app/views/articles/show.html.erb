@@ -1,8 +1,10 @@
 <% content_for :for_head do %>
   <meta property="og:title" content="<%= @article.discount %> <%= @article.title %>  @ <%= @article.store %>"  />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="<%=raw truncate(@article.content, :length => 45) %> " />
-  <meta property="og:url" content="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" />
+  <!--
+  <meta property="og:description" content="<%#=raw truncate(@article.content, :length => 45) %> " />
+  -->
+  <meta property="og:url" content="http://www.dealsnail.com/articles/<%= @article.id %>" />
   <meta property="og:image" content="<%= @article.avatar.url(:medium) %>"/>
  
 <% end %>
@@ -52,7 +54,7 @@
         &nbsp;&nbsp;
       <% end %>
       
-      <div class="fb-like" data-href="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" data-width="150" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      <div class="fb-like" data-href="http://www.dealsnail.com/articles/<%= @article.id %>" data-width="150" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
    
         
 
@@ -66,7 +68,7 @@
         <%= raw @article.content %>
         <br>
         <div class="pull-right">
-          post @<%= @article.updated_at.to_s(:short)%> 
+          post @<%= @article.updated_at.in_time_zone('Eastern Time (US & Canada)').to_s(:short)%> 
         </div>
 
       </div>
@@ -76,7 +78,7 @@
   <hr>
   <br>
   <div class="row">
-  <div class="fb-comments" data-href="https://radiant-temple-9834.herokuapp.com/articles/<%= @article.id %>" data-numposts="5" data-colorscheme="light"></div>
+  <div class="fb-comments" data-href="http://www.dealsnail.com/articles/<%= @article.id %>" data-numposts="5" data-colorscheme="light"></div>
   </div>
   <br>
 

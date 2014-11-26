@@ -42,7 +42,7 @@
    <div class="panel-footer">
 
    		<div class="pull-right">
-   			post @ <%= article.updated_at.to_s(:long)%>
+   			post @ <%= article.updated_at.in_time_zone('Eastern Time (US & Canada)').to_s(:long)%>
    		</div>
 
    		<div>
