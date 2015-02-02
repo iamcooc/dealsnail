@@ -42,7 +42,7 @@ gem 'impressionist'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'paperclip'
+gem 'paperclip' #brew install imagemagick
 gem 'aws-sdk'
 gem 'figaro'
 gem 'ckeditor'
