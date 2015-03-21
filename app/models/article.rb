@@ -17,6 +17,10 @@ class Article < ActiveRecord::Base
 
 	validates_presence_of :title, :store, :link, :content, :avatar	
 
+	extend FriendlyId
+
+	friendly_id :title, use: :slugged
+
 
 	
 end
