@@ -4,7 +4,7 @@
   <!--
   <meta property="og:description" content="<%#=raw truncate(@article.content, :length => 45) %> " />
   -->
-  <meta property="og:url" content="http://www.dealsnail.com/articles/<%= @article.id %>" />
+  <meta property="og:url" content="http://www.dealsnail.com/articles/<%= @article.friendly_id %>" />
   <meta property="og:image" content="<%= @article.avatar.url(:medium) %>"/>
  
 <% end %>
@@ -54,7 +54,7 @@
         &nbsp;&nbsp;
       <% end %>
       
-      <div class="fb-like" data-href="http://www.dealsnail.com/articles/<%= @article.id %>" data-width="150" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      <div class="fb-like" data-href="http://www.dealsnail.com/articles/<%= @article.friendly_id %>" data-width="150" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
    
         
 
@@ -64,7 +64,7 @@
   <div class="row">
     <div class="col-sm-12">
 
-      <div class="well">
+      <div class="well content-body">
         <%= raw @article.content %>
         <br>
         <div class="pull-right">
@@ -78,7 +78,7 @@
   <hr>
   <br>
   <div class="row">
-  <div class="fb-comments" data-href="http://www.dealsnail.com/articles/<%= @article.id %>" data-numposts="5" data-colorscheme="light"></div>
+  <div class="fb-comments" data-href="http://www.dealsnail.com/articles/<%= @article.friendly_id %>" data-numposts="5" data-colorscheme="light"></div>
   </div>
   <br>
 
@@ -91,3 +91,5 @@
     <%= link_to 'Edit', edit_article_path(@article) %>
   <% end %>
 <% end %>
+
+
