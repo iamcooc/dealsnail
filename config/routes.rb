@@ -8,6 +8,23 @@ Rails.application.routes.draw do
    :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :articles
   resources :users
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member  do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+
+    collection do
+      delete :empty_trash
+    end  
+      
+  end
+    
+  resources :messages, only: [:new, :create]
+
+
   
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   

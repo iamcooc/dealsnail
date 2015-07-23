@@ -55,6 +55,8 @@ gem 'searchkick' #brew install elasticsearch and java jdk
 
 gem 'friendly_id'
 
+gem 'mailboxer'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
