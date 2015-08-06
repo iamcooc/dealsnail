@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
     
   resources :messages, only: [:new, :create]
-
+  resources :calculators
 
   
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
